@@ -1,4 +1,0 @@
-[wokwi]
-version = 1
-firmware = 'build/Tarefa1-TecladoMatricial.uf2'
-elf = 'build/Tarefa1-TecladoMatricial.elf'
