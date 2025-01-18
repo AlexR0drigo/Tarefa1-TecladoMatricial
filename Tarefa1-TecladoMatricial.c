@@ -1,4 +1,5 @@
-//Por: Laerte Chaves dos Anjos
+#include <stdio.h>
+#include "pico/stdlib.h"
 
 // Pinos para o teclado matricial
 const uint8_t teclas_colunas[4] = {1, 2, 3, 4};
