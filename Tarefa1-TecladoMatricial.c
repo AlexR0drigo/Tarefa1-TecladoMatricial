@@ -1,4 +1,4 @@
-
+//Por: Laerte Chaves dos Anjos
 
 // Pinos para o teclado matricial
 const uint8_t teclas_colunas[4] = {1, 2, 3, 4};
@@ -11,8 +11,6 @@ const char matriz_teclas[4][4] = {
     {'7', '8', '9', 'C'},
     {'*', '0', '#', 'D'}
 };
-
-
 
 // Função para identificar a tecla pressionada
 char capturar_tecla() {
