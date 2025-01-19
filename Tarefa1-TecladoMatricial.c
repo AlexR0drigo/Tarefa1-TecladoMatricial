@@ -1,5 +1,25 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
+#include "hardware/pwm.h"
+
+#define BUZZER 12 //define o pino do buzzer
+
+// Configura o buzzer no pino GPIO especificado
+void setup_buzzer(uint gpio) {
+    gpio_set_function(gpio, GPIO_FUNC_PWM);
+    uint slice_num = pwm_gpio_to_slice_num(gpio);
+
+    pwm_set_wrap(slice_num, 255); // Define o valor máximo do contador PWM
+    pwm_set_chan_level(slice_num, pwm_gpio_to_channel(gpio), 128); // Define o nível de saída PWM
+    pwm_set_enabled(slice_num, true); // Habilita o PWM
+}
+
+// Emite um som no buzzer com a frequência especificada
+void buzz(uint gpio, uint frequencia) {
+    uint slice_num = pwm_gpio_to_slice_num(gpio);
+    pwm_set_clkdiv(slice_num, 125000000 / (256 * frequencia)); // Define a frequência do PWM
+    pwm_set_enabled(slice_num, true); // Habilita o PWM
+}
 
 // Pinos para o teclado matricial
 const uint8_t teclas_colunas[4] = {1, 2, 3, 4};
