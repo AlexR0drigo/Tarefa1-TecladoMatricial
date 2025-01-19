@@ -20,7 +20,6 @@ void setup_buzzer(uint gpio)
     pwm_set_enabled(slice_num, true);
 }
 
-// Emite um som no buzzer com a frequência especificada
 void buzz(uint gpio, uint frequencia)
 {
     uint slice_num = pwm_gpio_to_slice_num(gpio);
@@ -31,11 +30,14 @@ void buzz(uint gpio, uint frequencia)
 
     pwm_set_wrap(slice_num, contador);
     pwm_set_chan_level(slice_num, pwm_gpio_to_channel(gpio), contador / 2);
-    pwm_set_enabled(slice_num, true);
 
-    sleep_ms(500);
+    pwm_set_enabled(slice_num, true);
+    sleep_ms(50);  // Som curto (50ms)
     pwm_set_enabled(slice_num, false);
+    
+    sleep_ms(1000); // Pausa maior entre os sons para evitar efeito contínuo
 }
+
 
 // Pinos para o teclado matricial
 const uint8_t teclas_colunas[4] = {1, 2, 3, 4};
@@ -117,8 +119,8 @@ int main()
             else if (tecla == 'C')
             {
                 // Ativa o LED vermelho
-                gpio_put(LED_VERMELHO, true);
-                printf("LED vermelho ativado.\n");
+                gpio_put(LED_VERDE, true);
+                printf("LED verde ativado.\n");
 
                 // Mantém enquanto a tecla C estiver pressionada
                 while (capturar_tecla() == 'C')
@@ -127,8 +129,8 @@ int main()
                 }
 
                 // Desliga o LED vermelho ao soltar a tecla
-                gpio_put(LED_VERMELHO, false);
-                printf("LED vermelho desativado.\n");
+                gpio_put(LED_VERDE, false);
+                printf("LED verde desativado.\n");
             }
             else if (tecla == '#')
             {
@@ -141,10 +143,10 @@ int main()
                 switch (tecla)
                 {
                 case 'A':
-                    pino_led = LED_AZUL;
+                    pino_led = LED_VERMELHO;
                     break;
                 case 'B':
-                    pino_led = LED_VERDE;
+                    pino_led = LED_AZUL;
                     break;
                 }
 
