@@ -4,9 +4,10 @@
 
 #define BUZZER 12 // define o pino do buzzer
 
-// Definição de pinos para LEDs 
+// Definição de pinos para LEDs
 #define LED_AZUL 11
 #define LED_VERDE 10
+#define LED_VERMELHO 9
 
 // Configura o buzzer no pino GPIO especificado
 void setup_buzzer(uint gpio)
@@ -51,13 +52,15 @@ int main()
     // Configura os LEDs como saída
     gpio_init(LED_AZUL);
     gpio_init(LED_VERDE);
-   
+    gpio_init(LED_VERMELHO);
+
     gpio_set_dir(LED_AZUL, GPIO_OUT);
     gpio_set_dir(LED_VERDE, GPIO_OUT);
-  
+    gpio_set_dir(LED_VERMELHO, GPIO_OUT);
+
     gpio_put(LED_AZUL, false);
     gpio_put(LED_VERDE, false);
-   
+    gpio_put(LED_VERMELHO, false);
 
     // Configuração das colunas e linhas do teclado
     for (int i = 0; i < 4; i++)
@@ -84,12 +87,43 @@ int main()
 
             if (tecla == 'D')
             {
-                
+                // Liga todos os LEDs
+                gpio_put(LED_AZUL, true);
+                gpio_put(LED_VERDE, true);
+                gpio_put(LED_VERMELHO, true);
+                printf("Todos os LEDs ligados.\n");
+
+                // Mantém enquanto a tecla D estiver pressionada
+                while (capturar_tecla() == 'D')
+                {
+                    sleep_ms(50);
+                }
+
+                // Desliga todos os LEDs ao soltar a tecla
+                gpio_put(LED_AZUL, false);
+                gpio_put(LED_VERDE, false);
+                gpio_put(LED_VERMELHO, false);
+                printf("Todos os LEDs desligados.\n");
+            }
+            else if (tecla == 'C')
+            {
+                // Ativa o LED vermelho
+                gpio_put(LED_VERMELHO, true);
+                printf("LED vermelho ativado.\n");
+
+                // Mantém enquanto a tecla C estiver pressionada
+                while (capturar_tecla() == 'C')
+                {
+                    sleep_ms(50);
+                }
+
+                // Desliga o LED vermelho ao soltar a tecla
+                gpio_put(LED_VERMELHO, false);
+                printf("LED vermelho desativado.\n");
             }
             else if (tecla == '#')
             {
-                
-                
+                // aqui alguém vai adicionar o buzzer
             }
             else // Teclas A e B
             {
@@ -101,7 +135,7 @@ int main()
                     break;
                 case 'B':
                     pino_led = LED_VERDE;
-                    break;    
+                    break;
                 }
 
                 if (pino_led != -1)
