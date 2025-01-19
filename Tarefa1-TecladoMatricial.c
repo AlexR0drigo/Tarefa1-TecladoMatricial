@@ -35,7 +35,7 @@ void buzz(uint gpio, uint frequencia)
     sleep_ms(50);  // Som curto (50ms)
     pwm_set_enabled(slice_num, false);
     
-    sleep_ms(1000); // Pausa maior entre os sons para evitar efeito contínuo
+    sleep_ms(500); // Pausa maior entre os sons para evitar efeito contínuo
 }
 
 
