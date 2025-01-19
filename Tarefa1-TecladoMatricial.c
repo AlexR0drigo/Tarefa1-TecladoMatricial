@@ -116,6 +116,24 @@ int main()
                 gpio_put(LED_VERMELHO, false);
                 printf("Todos os LEDs desligados.\n");
             }
+            if (tecla == '*')
+            {
+                // Liga os LEDs azul e vermelho
+                gpio_put(LED_AZUL, true);
+                gpio_put(LED_VERMELHO, true);
+                printf("Os LEDs azul e vermelho ligados.\n");
+
+                // Mantém enquanto a tecla * estiver pressionada
+                while (capturar_tecla() == '*')
+                {
+                    sleep_ms(50);
+                }
+
+                // Desliga os LEDs azul e vermelho ao soltar a tecla
+                gpio_put(LED_AZUL, false);
+                gpio_put(LED_VERMELHO, false);
+                printf("Os LEDs azul e vermelho desligados.\n");
+            }
             else if (tecla == 'C')
             {
                 // Ativa o LED vermelho
