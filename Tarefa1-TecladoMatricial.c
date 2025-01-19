@@ -2,30 +2,39 @@
 #include "pico/stdlib.h"
 #include "hardware/pwm.h"
 
-#define BUZZER 12 // define o pino do buzzer
+#define BUZZER 10 // define o pino do buzzer
 
 // Definição de pinos para LEDs
-#define LED_AZUL 11
-#define LED_VERDE 10
-#define LED_VERMELHO 9
+#define LED_AZUL 12
+#define LED_VERDE 11
+#define LED_VERMELHO 13
 
 // Configura o buzzer no pino GPIO especificado
 void setup_buzzer(uint gpio)
 {
-    gpio_set_function(gpio, GPIO_FUNC_PWM);
+   gpio_set_function(gpio, GPIO_FUNC_PWM);
     uint slice_num = pwm_gpio_to_slice_num(gpio);
 
-    pwm_set_wrap(slice_num, 255);                                  // Define o valor máximo do contador PWM
-    pwm_set_chan_level(slice_num, pwm_gpio_to_channel(gpio), 128); // Define o nível de saída PWM
-    pwm_set_enabled(slice_num, true);                              // Habilita o PWM
+    pwm_set_wrap(slice_num, 255);
+    pwm_set_chan_level(slice_num, pwm_gpio_to_channel(gpio), 128);
+    pwm_set_enabled(slice_num, true);
 }
 
 // Emite um som no buzzer com a frequência especificada
 void buzz(uint gpio, uint frequencia)
 {
     uint slice_num = pwm_gpio_to_slice_num(gpio);
-    pwm_set_clkdiv(slice_num, 125000000 / (256 * frequencia)); // Define a frequência do PWM
-    pwm_set_enabled(slice_num, true);                          // Habilita o PWM
+    gpio_set_function(gpio, GPIO_FUNC_PWM);
+
+    uint32_t freq_relogio = 125000000;
+    uint16_t contador = freq_relogio / frequencia;
+
+    pwm_set_wrap(slice_num, contador);
+    pwm_set_chan_level(slice_num, pwm_gpio_to_channel(gpio), contador / 2);
+    pwm_set_enabled(slice_num, true);
+
+    sleep_ms(500);
+    pwm_set_enabled(slice_num, false);
 }
 
 // Pinos para o teclado matricial
@@ -123,7 +132,8 @@ int main()
             }
             else if (tecla == '#')
             {
-                // aqui alguém vai adicionar o buzzer
+            printf("Buzzer ativado!\n");
+            buzz(BUZZER, 1000);
             }
             else // Teclas A e B
             {
@@ -183,4 +193,3 @@ char capturar_tecla() {
 
     return 'n'; // Nenhuma tecla pressionada
 }
-
