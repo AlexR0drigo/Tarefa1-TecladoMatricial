@@ -4,6 +4,7 @@
 
 #define BUZZER 12 //define o pino do buzzer
 
+// Configura o buzzer no pino GPIO especificado
 void setup_buzzer(uint gpio) {
     gpio_set_function(gpio, GPIO_FUNC_PWM);
     uint slice_num = pwm_gpio_to_slice_num(gpio);
