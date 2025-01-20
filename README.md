@@ -1,4 +1,4 @@
-# *Controle de LEDs e Buzzer com Teclado Matricial - Grupo - Subgrupo 0*
+# *Controle de LEDs e Buzzer com Teclado Matricial - Grupo 1 - Subgrupo 0*
 
 ## *Introdução*
 
@@ -22,13 +22,13 @@ Pressionar a tecla D acende todos os LEDs e os desliga ao soltar.
 
 Pressionar a tecla * acende os LEDs azul e vermelho e os desliga ao soltar.
 
+Pressionar a tecla A acende o LED vermelho e o desliga ao soltar.
+
+Pressionar a tecla B acende o LED azul e o desliga ao soltar.
+
 Pressionar a tecla C acende o LED verde e o desliga ao soltar.
 
 Pressionar a tecla # ativa o buzzer por um curto período.
-
-Pressionar A acende o LED vermelho enquanto a tecla estiver pressionada.
-
-Pressionar B acende o LED azul enquanto a tecla estiver pressionada.
 
 ## *Link para o video ensaio*
 
