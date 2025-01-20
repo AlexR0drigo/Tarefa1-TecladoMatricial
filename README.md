@@ -1,4 +1,4 @@
-# *Controle de LEDs e Buzzer com Teclado Matricial*
+# *Controle de LEDs e Buzzer com Teclado Matricial - Grupo - Subgrupo 0*
 
 ## *Introdução*
 
@@ -26,7 +26,9 @@ Pressionar a tecla C acende o LED verde e o desliga ao soltar.
 
 Pressionar a tecla # ativa o buzzer por um curto período.
 
-Pressionar A ou B acende o LED correspondente enquanto a tecla estiver pressionada.
+Pressionar A acende o LED vermelho enquanto a tecla estiver pressionada.
+
+Pressionar B acende o LED azul enquanto a tecla estiver pressionada.
 
 ## *Link para o video ensaio*
 
@@ -51,3 +53,5 @@ Naiane Santos: Não participou da tarefa.
 Jeová Cosme: Integração dos LEDs com as teclas do keypad, implementando os comportamentos das teclas A e B.
 
 Gabriel Menezes: Integração dos LEDs com as teclas do keypad, implementando os comportamentos das teclas C e D.
+
+Todos os integrantes do grupo se envolveram de forma ativa na construção do código, especialmente nas reuniões via Meet, entretanto a divisão por funções foi desafiadora pois todos tinham que participar no ativamente no repositório, esse texto serve de esclarecimento que todos os integrantes participaram, exceto Naiane Santos.  
