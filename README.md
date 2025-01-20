@@ -50,8 +50,10 @@ Gabriel Oliveira: Implementação do buzzer.
 
 Naiane Santos: Não participou da tarefa.
 
+Victor Henrick: Não participou da tarefa.
+
 Jeová Cosme: Integração dos LEDs com as teclas do keypad, implementando os comportamentos das teclas A e B.
 
 Gabriel Menezes: Integração dos LEDs com as teclas do keypad, implementando os comportamentos das teclas C e D.
 
-Todos os integrantes do grupo se envolveram de forma ativa na construção do código, especialmente nas reuniões via Meet, entretanto a divisão por funções foi desafiadora pois todos tinham que participar no ativamente no repositório, esse texto serve de esclarecimento que todos os integrantes participaram, exceto Naiane Santos.  
+Todos os integrantes do grupo se envolveram de forma ativa na construção do código, especialmente nas reuniões via Meet, entretanto a divisão por funções foi desafiadora pois todos tinham que participar no ativamente no repositório, esse texto serve de esclarecimento que todos os integrantes participaram, exceto Naiane Santos e Victor Henrick.  
